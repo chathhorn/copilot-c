@@ -1,0 +1,70 @@
+cabal-version             : >= 1.10
+name                      : copilot-c
+version                   : 2.2.0
+synopsis                  : A backend for for translating Copilot specifications to monitors in C.
+description               :
+  The Copilot back-end targeting C.
+  .
+  Copilot is a stream (i.e., infinite lists) domain-specific language (DSL) in
+  Haskell that compiles into embedded C.  Copilot contains an interpreter,
+  multiple back-end compilers, and other verification tools.  A tutorial, bug
+  reports, and todos are available at
+  <https://github.com/Copilot-Language/copilot-discussion>.
+  .
+  Examples are available at
+  <https://github.com/Copilot-Language/Copilot/tree/master/Examples>.
+
+license                   : BSD3
+license-file              : LICENSE
+maintainer                : leepike@galois.com
+stability                 : Experimental
+category                  : Language, Embedded
+build-type                : Simple
+extra-source-files        : README.md
+
+author                    : Lee Pike
+                          , Robin Morisset
+                          , Alwyn Goodloe
+                          , Sebastian Niller
+                          , Nis Nordby Wegmann
+
+source-repository head
+    type:       git
+    location:   http://github.com/Copilot-Language/copilot-c.git
+
+library
+  default-language        : Haskell2010
+  hs-source-dirs          : src
+  ghc-options             : -Wall -fwarn-tabs
+  ghc-prof-options        : -auto-all -caf-all
+
+  build-depends           : base >= 4.0 && < 5
+                          , containers >= 0.4
+                          , copilot-core == 2.2.0
+                          , directory >= 1.2.1
+                          , pretty >= 1
+                          , filepath >= 1.1
+                          , base-compat
+                          , random
+                          , async
+                          , mtl
+                          , array
+                          , crackNum
+                          , old-time
+                          , data-binary-ieee754
+                          , deepseq
+                          , process
+                          , syb
+
+  exposed-modules         : Copilot.Compile.C
+                          , Copilot.Compile.C.ACSLExpr
+                          , Copilot.Compile.C.ACSLProof
+                          , Copilot.Compile.C.Code
+                          , Copilot.Compile.C.Common
+                          , Copilot.Compile.C.Copilot2SBV
+                          , Copilot.Compile.C.MetaTable
+                          , Copilot.Compile.C.Params
+                          , Copilot.Compile.C.Queue
+                          , Copilot.Compile.C.Witness
+                          , Copilot.Compile.C.Driver
+                          , Copilot.Compile.C.Makefile
